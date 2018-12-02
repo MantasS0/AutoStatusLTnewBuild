@@ -12,8 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
+import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
+import static com.example.ms.autostatuslt.MainActivity.vehicleName_3;
+import static com.example.ms.autostatuslt.MainActivity.vehicleSelectedCounter;
 
 public class mainFragment extends Fragment {
 
@@ -36,6 +41,16 @@ public class mainFragment extends Fragment {
         buttonNavigateSettingsFragment = view.findViewById(R.id.button_settingsFragment);
         buttonNavigateStatisticsFragment = view.findViewById(R.id.button_statisticsFragment);
         buttonAddToDatabase = view.findViewById(R.id.button_addToDataBase);
+
+        TextView textViewVehicleName = view.findViewById(R.id.text_main_vehicleName);
+        if (vehicleSelectedCounter == 1) {
+            textViewVehicleName.setText(vehicleName_1);
+        } else if (vehicleSelectedCounter == 2) {
+            textViewVehicleName.setText(vehicleName_2);
+        } else if (vehicleSelectedCounter == 3) {
+            textViewVehicleName.setText(vehicleName_3);
+        }
+
 
         buttonNavigateSettingsFragment.setOnClickListener(new View.OnClickListener() {
             @Override

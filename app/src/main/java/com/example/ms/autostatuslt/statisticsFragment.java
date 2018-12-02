@@ -11,9 +11,9 @@ public class statisticsFragment extends Fragment {
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
-        return inflater.inflate(R.layout.fragment_statistics, parent, false);
+        return inflater.inflate(R.layout.fragment_statistics, container, false);
     }
 
     // This event is triggered soon after onCreateView().

@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Vehicle 1"/>
+            />
 
         <Button
             android:id="@+id/button_auto2"
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Vehicle 2" />
+           />
 
         <Button
             android:id="@+id/button_auto3"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Vehicle 3" />
+           />
 
         <TextView
             android:id="@+id/text_buttonRename"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="30sp"
             android:textAlignment="center"
-            android:text="To rename vehilces, please press and hold desired button fo 1 sec."/>
+            android:text="To rename vehicles, please press and hold desired button fo 1 sec."/>
         <RelativeLayout
             android:visibility="gone"
             android:id="@+id/vehicleRenamingLayout"

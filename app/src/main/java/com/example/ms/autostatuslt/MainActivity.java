@@ -7,6 +7,13 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Integer vehicleSelectedCounter = 1;
+
+    public static String vehicleName_1 = "Vehicle 1";
+    public static String vehicleName_2 = "Vehicle 2";
+    public static String vehicleName_3 = "Vehicle 3";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
