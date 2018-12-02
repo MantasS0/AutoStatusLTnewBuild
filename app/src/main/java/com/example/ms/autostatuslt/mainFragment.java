@@ -56,7 +56,7 @@ public class mainFragment extends Fragment {
                 Toast.makeText(getActivity(), "Going to statistics", Toast.LENGTH_SHORT).show();
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.container, new settingsFragment()); //reik stats fragmento
+                ft.replace(R.id.container, new statisticsFragment());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.addToBackStack("Statistics fragment");
                 ft.commit();
