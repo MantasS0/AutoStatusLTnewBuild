@@ -14,11 +14,20 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-
-        ft.add(R.id.mainFragment);
+        ft.add(R.id.container, new mainFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-        ft.addToBackStack(getName());
         ft.commit();
+
+//        ft.add(R.id.mainFragment);
+//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//
+//        ft.addToBackStack(getName());
+//        ft.commit();
+
+//         Replace the contents of the container with the new fragment
+//        ft.replace(R.id.your_placeholder, new FooFragment());
+//        // or ft.add(R.id.your_placeholder, new FooFragment());
+//        // Complete the changes added above
+//        ft.commit();
     }
 }
