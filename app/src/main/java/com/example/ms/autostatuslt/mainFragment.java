@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.ms.autostatuslt.MainActivity.currentVehicle;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_3;
@@ -42,14 +43,19 @@ public class mainFragment extends Fragment {
         buttonNavigateStatisticsFragment = view.findViewById(R.id.button_statisticsFragment);
         buttonAddToDatabase = view.findViewById(R.id.button_addToDataBase);
 
-        TextView textViewVehicleName = view.findViewById(R.id.text_main_vehicleName);
         if (vehicleSelectedCounter == 1) {
-            textViewVehicleName.setText(vehicleName_1);
+            currentVehicle = vehicleName_1;
         } else if (vehicleSelectedCounter == 2) {
-            textViewVehicleName.setText(vehicleName_2);
+            currentVehicle = vehicleName_2;
         } else if (vehicleSelectedCounter == 3) {
-            textViewVehicleName.setText(vehicleName_3);
+            currentVehicle = vehicleName_3;
         }
+
+        TextView textViewVehicleName = view.findViewById(R.id.text_main_vehicleName);
+        textViewVehicleName.setText(currentVehicle);
+
+
+
 
 
         buttonNavigateSettingsFragment.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +81,14 @@ public class mainFragment extends Fragment {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.addToBackStack("Statistics fragment");
                 ft.commit();
+            }
+        });
+
+        buttonAddToDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Entry added to " + currentVehicle + " statistics.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

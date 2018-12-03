@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import static com.example.ms.autostatuslt.MainActivity.currentVehicle;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_3;
@@ -27,13 +28,8 @@ public class statisticsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         TextView textViewVehicleName = view.findViewById(R.id.text_statistics_vehicleName);
-        if (vehicleSelectedCounter == 1) {
-            textViewVehicleName.setText(vehicleName_1);
-        } else if (vehicleSelectedCounter == 2) {
-            textViewVehicleName.setText(vehicleName_2);
-        } else if (vehicleSelectedCounter == 3) {
-            textViewVehicleName.setText(vehicleName_3);
-        }
+        textViewVehicleName.setText(currentVehicle);
+
 
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);

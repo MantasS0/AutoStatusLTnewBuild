@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     public static String vehicleName_2 = "Vehicle 2";
     public static String vehicleName_3 = "Vehicle 3";
 
+    public static String currentVehicle = vehicleName_1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ft.add(R.id.container, new mainFragment());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+
 
 //        ft.add(R.id.mainFragment);
 //        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
