@@ -14,7 +14,6 @@
             android:id="@+id/text_statistics_vehicleName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mercedes Benz CLK 320"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
