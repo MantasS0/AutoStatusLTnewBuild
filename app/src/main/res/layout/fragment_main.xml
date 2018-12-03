@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:text="Liters"
+            android:text="@string/Main_liters_textView"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:layout_marginStart="15sp"
@@ -55,7 +55,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="15sp"
-            android:hint="amount in liters"
+            android:hint="@string/Main_liters_editText_hint"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="18sp"/>
@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="@string/Main_price_textView"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:layout_marginStart="15sp"
@@ -77,7 +77,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="15sp"
-            android:hint="total price"
+            android:hint="@string/Main_price_editText_hint"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="18sp"/>
@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:text="Odometer reading"
+            android:text="@string/Main_odometer_textView"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:layout_marginStart="15sp"
@@ -99,7 +99,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="15sp"
-            android:hint="kilometers"
+            android:hint="@string/Main_odometer_editText_hint"
             android:inputType="number"
             android:textAlignment="center"
             android:textSize="18sp"/>
@@ -107,7 +107,7 @@
         <TextView
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:text="Date"
+            android:text="@string/Main_date_textView"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:layout_marginStart="15sp"
@@ -121,7 +121,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="15sp"
-            android:hint="filling date"
+            android:hint="@string/Main_date_editText_hint"
             android:inputType="date"
             android:textAlignment="center"
             android:textSize="18sp"/>
@@ -139,14 +139,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5sp"
             android:layout_alignParentStart="true"
-            android:text="Settings" />
+            android:text="@string/Main_button_settings" />
 
         <Button
             android:id="@+id/button_statisticsFragment"
             android:layout_width="115sp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Statistics" />
+            android:text="@string/Main_button_statistics" />
 
         <Button
             android:id="@+id/button_addToDataBase"
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5sp"
             android:layout_alignParentEnd="true"
-            android:text="ADD" />
+            android:text="@string/Main_button_addToDatabase" />
     </RelativeLayout>
 
 </FrameLayout>

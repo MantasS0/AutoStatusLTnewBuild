@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="30sp"
             android:textAlignment="center"
-            android:text="To rename vehicles, please press and hold desired button fo 1 sec."/>
+            android:text="@string/Settings_button_rename_explanation_text"/>
         <RelativeLayout
             android:visibility="gone"
             android:id="@+id/vehicleRenamingLayout"
@@ -52,7 +52,7 @@
                 android:id="@+id/editText_renameAuto"
                 android:layout_width="match_parent"
                 android:layout_height="100sp"
-                android:hint="New vehicle name"
+                android:hint="@string/Settings_rename_editText_hint"
                 android:textAlignment="center"/>
 
             <Button
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Done"/>
+                android:text="@string/Settings_rename_button_text"/>
         </RelativeLayout>
     </RelativeLayout>
 

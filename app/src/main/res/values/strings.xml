@@ -3,5 +3,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Settings_button_rename_explanation_text">To rename vehicles, please press and hold desired button fo 1 sec.</string>
+    <string name="Settings_rename_editText_hint">New vehicle name</string>
+    <string name="Settings_rename_button_text">Done</string>
 
-   </resources>
+    <string name="Main_liters_textView">Liters</string>
+    <string name="Main_price_textView">Price</string>
+    <string name="Main_odometer_textView">Odometer reading</string>
+    <string name="Main_date_textView">Date</string>
+
+    <string name="Main_liters_editText_hint">amount in liters</string>
+    <string name="Main_price_editText_hint">total price</string>
+    <string name="Main_odometer_editText_hint">kilometers</string>
+    <string name="Main_date_editText_hint">filling date</string>
+
+    <string name="Main_button_settings">Settings</string>
+    <string name="Main_button_statistics">Statistics</string>
+    <string name="Main_button_addToDatabase">Add</string>
+
+</resources>
