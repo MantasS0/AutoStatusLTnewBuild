@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/text_statistics_vehicleName"
@@ -23,6 +23,15 @@
             android:layout_below="@+id/text_statistics_vehicleName"
             android:gravity="center"
             android:text="Statistics place holder"/>
+
+        <!--TIKRINTI SITA DALI-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_below="@+id/text_statistics_vehicleName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            tools:listitem="@layout/recyclerview_data" />
 
     </RelativeLayout>
 
