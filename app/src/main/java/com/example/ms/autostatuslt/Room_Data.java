@@ -26,9 +26,9 @@ public class Room_Data {
 
     @NonNull
     @ColumnInfo(name = "Date")
-    private Date date;
+    private String date;
 
-    public Room_Data(int id, float liters, float price, int distance, Date date){
+    public Room_Data(int id, float liters, float price, int distance, String date){
         this.id = id;
         this.liters = liters;
         this.price = price;
@@ -70,11 +70,11 @@ public class Room_Data {
     }
 
     @NonNull
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(@NonNull Date date) {
+    public void setDate(@NonNull String date) {
         this.date = date;
     }
 }
