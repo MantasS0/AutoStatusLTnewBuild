@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity(tableName = "Data_table")
 public class Room_Data {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private Integer id;
 
     @NonNull
     @ColumnInfo(name = "Liters")
@@ -28,15 +28,15 @@ public class Room_Data {
     @ColumnInfo(name = "Date")
     private String date;
 
-    public Room_Data(int id, float liters, float price, int distance, String date){
-        this.id = id;
+    public Room_Data(float liters, float price, int distance, String date){
+//        this.id = id;
         this.liters = liters;
         this.price = price;
         this.distance = distance;
         this.date = date;
     }
-
-    public int getId(){return id;}
+    @NonNull
+    public Integer getId(){return id;}
 
     public void setId(int id) {
         this.id = id;
