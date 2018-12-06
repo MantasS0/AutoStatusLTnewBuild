@@ -1,6 +1,9 @@
 package com.example.ms.autostatuslt;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,13 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import static com.example.ms.autostatuslt.MainActivity.currentVehicle;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_3;
 import static com.example.ms.autostatuslt.MainActivity.vehicleSelectedCounter;
+import static com.example.ms.autostatuslt.MainActivity.NEW_WORD_ACTIVITY_REQUEST_CODE;
+
+
 
 public class statisticsFragment extends Fragment {
+
+
+    private DataViewModel mDataViewModel;
+
         // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
     @Override
@@ -24,9 +36,23 @@ public class statisticsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        final Room_DataListAdapter adapter = new Room_DataListAdapter(getActivity());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        final Room_DataListAdapter adapter = new Room_DataListAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        mDataViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+
+        // Add an observer on the LiveData returned by getAlphabetizedWords.
+        // The onChanged() method fires when the observed data changes and the activity is
+        // in the foreground.
+        mDataViewModel.getAllData().observe(this, new Observer<List<Room_Data>>() {
+            @Override
+            public void onChanged(@Nullable final List<Room_Data> roomData) {
+                // Update the cached copy of the words in the adapter.
+                adapter.setRoomData(roomData);
+            }
+        });
 
 
         return rootView;

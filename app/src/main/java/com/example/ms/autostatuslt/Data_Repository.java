@@ -21,8 +21,7 @@ public class Data_Repository {
         return mAllData;
     }
 
-    public void insert (Room_Data room_data){
-        new insertAsyncTask(mDataDAO).execute(room_data);
+    public void insert (Room_Data room_data){ new insertAsyncTask(mDataDAO).execute(room_data);
     }
 
     private static class insertAsyncTask extends AsyncTask<Room_Data, Void, Void> {

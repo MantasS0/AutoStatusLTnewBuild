@@ -21,4 +21,8 @@
     <string name="Main_button_statistics">Statistics</string>
     <string name="Main_button_addToDatabase">Add</string>
 
+    <string name="empty_not_saved">Please fill in all the fields and try again.</string>
+
+
+
 </resources>

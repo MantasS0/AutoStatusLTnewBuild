@@ -3,6 +3,8 @@ package com.example.ms.autostatuslt;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.List;
 
@@ -19,5 +21,5 @@ public class DataViewModel extends AndroidViewModel {
 
     LiveData<List<Room_Data>> getAllData() {return mAllData;}
 
-    public void insert(Room_Data roomData) {mRepository.insert(roomData);}
+     public void insert(Room_Data roomData) {mRepository.insert(roomData);}
 }

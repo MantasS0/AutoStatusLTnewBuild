@@ -5,12 +5,14 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import java.util.Date;
 
 @Entity(tableName = "Data_table")
 public class Room_Data {
+
     @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    @NonNull
+    @ColumnInfo(name = "Id")
+    private int id;
 
     @NonNull
     @ColumnInfo(name = "Liters")
@@ -38,7 +40,7 @@ public class Room_Data {
     @NonNull
     public Integer getId(){return id;}
 
-    public void setId(int id) {
+    public void setId( int id) {
         this.id = id;
     }
 
