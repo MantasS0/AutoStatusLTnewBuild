@@ -2,12 +2,15 @@ package com.example.ms.autostatuslt;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.util.List;
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public static String vehicleName_3 = "Vehicle 3";
 
     public static String currentVehicle = vehicleName_1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

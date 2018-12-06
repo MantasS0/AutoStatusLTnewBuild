@@ -6,6 +6,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Insert;
 import android.content.Context;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +21,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -80,29 +84,26 @@ public class mainFragment extends Fragment {
 
                     mViewModel.insert(roomData);
                     clearFields();
+                    closeKeyboard();
+
+
+
                 }
             }
         });
     }
-
-//    private void observerSetup() {
-//
-//        mViewModel.getAllData().observe(this, new Observer<List<Room_Data>>() {
-//            @Override
-//            public void onChanged(@Nullable final List<Room_Data> data) {
-//                adapter.setRoomData(data);
-//            }
-//        });
-//
-//
-//    }
-
+    private void closeKeyboard() {
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
         mViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
 
         editText_liters = getView().findViewById(R.id.textEdit_liters);
@@ -111,7 +112,6 @@ public class mainFragment extends Fragment {
         editText_date = getView().findViewById(R.id.textEdit_date);
 
         listenerSetup();
-//        observerSetup();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
