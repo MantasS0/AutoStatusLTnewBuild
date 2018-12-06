@@ -85,17 +85,17 @@ public class mainFragment extends Fragment {
         });
     }
 
-    private void observerSetup() {
-
-            mViewModel.getAllData().observe(this, new Observer<List<Room_Data>>() {
-            @Override
-            public void onChanged(@Nullable final List<Room_Data> data) {
-                adapter.setRoomData(data);
-            }
-        });
-
-
-    }
+//    private void observerSetup() {
+//
+//        mViewModel.getAllData().observe(this, new Observer<List<Room_Data>>() {
+//            @Override
+//            public void onChanged(@Nullable final List<Room_Data> data) {
+//                adapter.setRoomData(data);
+//            }
+//        });
+//
+//
+//    }
 
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
@@ -111,7 +111,7 @@ public class mainFragment extends Fragment {
         editText_date = getView().findViewById(R.id.textEdit_date);
 
         listenerSetup();
-        observerSetup();
+//        observerSetup();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
@@ -136,9 +136,6 @@ public class mainFragment extends Fragment {
         } else if (vehicleSelectedCounter == 3) {
             currentVehicle = vehicleName_3;
         }
-
-        listenerSetup();
-        observerSetup();
 
 
         TextView textViewVehicleName = view.findViewById(R.id.text_main_vehicleName);
