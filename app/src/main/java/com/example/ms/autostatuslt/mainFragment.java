@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.TypeConverter;
 import android.content.Context;
 import android.content.Intent;
 import android.inputmethodservice.Keyboard;
@@ -28,6 +29,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -51,6 +56,9 @@ public class mainFragment extends Fragment {
     private EditText editText_price;
     private EditText editText_distance;
     private EditText editText_date;
+
+    private TextView text_averageConsumptionInMain;
+    private TextView text_averagePriceInMain;
 
 
     private DataViewModel mViewModel;
@@ -93,6 +101,51 @@ public class mainFragment extends Fragment {
             }
         });
     }
+//private List<Float> vykdyti () throws NullPointerException {
+//        convertObjectToList(mViewModel.getVehicleLiters().getValue().toArray());
+//    return null;
+//}
+//    private void calculateAvgConsumption () {
+//        ArrayList<Float> liters = new ArrayList<>();
+//        Object lai[] = mViewModel.getVehicleLiters().getValue().toArray();
+//
+////        for (l:lai.length) {
+////            liters.add(l);
+////
+////        }
+//        List<?> list = new ArrayList<>();
+//        list = Arrays.asList((Object[])lai);
+//
+//        Float[] y = list.toArray(new Float[list.toArray().length]);
+//        liters.addAll(Arrays.asList(y));
+//        float avgCons = 0;
+//
+//        for (int i = 0; i<y.length; i++){
+//            float l = y[i];
+//            avgCons +=l;
+//
+//        }
+////        liters = Arrays.asList((Object[])mViewModel.getVehicleLiters().getValue().toArray());
+////        convertObjectToList(lai);
+////        liters = vykdyti();
+//
+////        liters = new ArrayList<Float>().addAll(Float.parseFloat(mViewModel.getVehicleLiters().getValue().toArray()));
+//
+//
+//
+//        String avgConsumption = text_averageConsumptionInMain.setText("Average consuption: " + avgCons).toString();
+//    }
+//
+    public static List<?> convertObjectToList(Object obj) {
+        List<?> list = new ArrayList<>();
+        if (obj.getClass().isArray()) {
+            list = Arrays.asList((Object[])obj);
+        } else if (obj instanceof Collection) {
+            list = new ArrayList<>((Collection<?>)obj);
+        }
+        return list;
+    }
+
 //    private void closeKeyboard() {
 //        getActivity().getWindow().setSoftInputMode(
 //                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -111,6 +164,9 @@ public class mainFragment extends Fragment {
         editText_price = getView().findViewById(R.id.textEdit_price);
         editText_distance = getView().findViewById(R.id.textEdit_kilometers);
         editText_date = getView().findViewById(R.id.textEdit_date);
+
+        text_averageConsumptionInMain = getView().findViewById(R.id.text_averageConsumptionInMain);
+        text_averagePriceInMain = getView().findViewById(R.id.text_averagePriceInMain);
 
         listenerSetup();
     }
