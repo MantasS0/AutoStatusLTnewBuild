@@ -77,6 +77,7 @@ public class mainFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please fill in all the fields.", Toast.LENGTH_SHORT).show();
                 } else {
                     Room_Data roomData = new Room_Data(
+                            vehicleSelectedCounter,
                             Float.parseFloat(liters),
                             Float.parseFloat(price),
                             Integer.parseInt(distance),
@@ -84,7 +85,7 @@ public class mainFragment extends Fragment {
 
                     mViewModel.insert(roomData);
                     clearFields();
-                    closeKeyboard();
+//                    closeKeyboard();
 
 
 
@@ -92,10 +93,10 @@ public class mainFragment extends Fragment {
             }
         });
     }
-    private void closeKeyboard() {
-        getActivity().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    }
+//    private void closeKeyboard() {
+//        getActivity().getWindow().setSoftInputMode(
+//                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//    }
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
