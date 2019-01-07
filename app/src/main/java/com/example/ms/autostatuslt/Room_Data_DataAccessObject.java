@@ -1,6 +1,7 @@
 package com.example.ms.autostatuslt;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -20,7 +21,7 @@ public interface Room_Data_DataAccessObject {
     @Query("SELECT * FROM Data_table WHERE vehicleSelectedCounter = :vehicleCounter")
     List<Room_Data> findVehicle(int vehicleCounter);
     @Query("SELECT * FROM Data_table WHERE vehicleSelectedCounter = :vehicleCounter IN (Liters)")
-    LiveData<List<Room_Data>> getAllLiters(int vehicleCounter);
+    List<Room_Data> getAllLiters(int vehicleCounter);
     @Query("SELECT * FROM Data_table WHERE vehicleSelectedCounter = :vehicleCounter IN (Price)")
     LiveData<List<Room_Data>> getAllPrice(int vehicleCounter);
     @Query("SELECT * FROM Data_table WHERE vehicleSelectedCounter = :vehicleCounter IN (Distance)")

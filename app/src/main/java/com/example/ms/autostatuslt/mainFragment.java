@@ -1,7 +1,9 @@
 package com.example.ms.autostatuslt;
 
 import android.app.Activity;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.TypeConverter;
@@ -37,7 +39,6 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
-import static com.example.ms.autostatuslt.MainActivity.NEW_WORD_ACTIVITY_REQUEST_CODE;
 import static com.example.ms.autostatuslt.MainActivity.currentVehicle;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
@@ -60,9 +61,11 @@ public class mainFragment extends Fragment {
     private TextView text_averageConsumptionInMain;
     private TextView text_averagePriceInMain;
 
-
+    private Data_Repository mRepository;
     private DataViewModel mViewModel;
     private Room_DataListAdapter adapter;
+    private float avgLiters;
+
 
     private void listenerSetup() {
         Button buttonAddToDatabase = getView().findViewById(R.id.button_addToDataBase);
@@ -96,23 +99,104 @@ public class mainFragment extends Fragment {
 //                    closeKeyboard();
 
 
-
                 }
             }
         });
     }
-//private List<Float> vykdyti () throws NullPointerException {
-//        convertObjectToList(mViewModel.getVehicleLiters().getValue().toArray());
-//    return null;
-//}
-//    private void calculateAvgConsumption () {
-//        ArrayList<Float> liters = new ArrayList<>();
-//        Object lai[] = mViewModel.getVehicleLiters().getValue().toArray();
+
+    private void observerSetup() {
+
+//        mViewModel.getAllData().observe(this, new Observer<List<Room_Data>>() {
+//            @Override
+//            public void onChanged(@Nullable final List<Room_Data> vehicleData) {
+//                adapter.setRoomData(vehicleData);
+//            }
+//        });
+        System.out.println("hello form observer setup");
+
+        mViewModel.getVehicleDataResults().observe(this,
+                new Observer<List<Room_Data>>() {
+                    @Override
+                    public void onChanged(@Nullable final List<Room_Data> vehicleData) {
+
+                        if (vehicleData.size() > 0) {
+                            calculateAvgConsumption();
+                            text_averageConsumptionInMain.setText("Average consuption: " + avgLiters + " l/100km");
+                        } else {
+                            text_averageConsumptionInMain.setText("No data yet");
+                        }
+                    }
+                });
+    }
+//    private List<Float> listLitrai;
 //
-////        for (l:lai.length) {
-////            liters.add(l);
-////
-////        }
+//private List<Float> vykdyti () throws NullPointerException {
+//    List<?> listTarpinis;
+//        listTarpinis = convertObjectToList(mViewModel.getVehicleLiters().getValue().toArray());
+//
+//        return listLitrai;
+//    }
+
+//    public int getItemCount() {
+//        if (mRoomData != null)
+//            return mRoomData.size();
+//        else return 0;
+//    }
+
+    private void calculateAvgConsumption() {
+//        List<Float> liters = new ArrayList<>();
+
+//            adapter.getItemCount();
+//            Float[] fl1 = mViewModel.getVehicleLiters().getValue().toArray(new Float[0]);
+
+//            Object[] lai = mViewModel.getVehicleLiters().getValue().toArray();
+//            Object[] lai = mViewModel.findVehicleLiters(vehicleSelectedCounter);
+//
+//            for (Object l : lai) {
+//                liters.add(Float.parseFloat(l.toString()));
+//            }
+//            float sumLiters = 0;
+//            float avgLiters = 0;
+//            for (Float liter : liters) {
+//                sumLiters += liter;
+//            }
+//            avgLiters = sumLiters / liters.size();
+
+//        List<Room_Data> allData = mRepository.getAllData().getValue();//mViewModel.getAllData().getValue();
+//
+//        List<Integer> allDistanceList = new ArrayList<>();
+
+        float liters = 0;
+        float price = 0;
+
+//        for (Room_Data entry : allData) {
+//            if (entry.getVehicleSelectedCounter().equals(vehicleSelectedCounter)) {
+//                allDistanceList.add(entry.getDistance());
+//                liters += entry.getLiters();
+//                price += entry.getPrice();
+//            }
+//        }
+
+
+        mViewModel.findVehicleData(vehicleSelectedCounter);
+        List<Room_Data> vehicleDataList = mRepository.vehicleData.getValue();
+        List<Integer> vehicleDistanceList = new ArrayList<>();
+        if(vehicleDataList != null){
+            for (Room_Data entry : vehicleDataList) {
+                vehicleDistanceList.add(entry.getDistance());
+                liters += entry.getLiters();
+            }
+        }
+
+        int distanceDifference = calcDistance(vehicleDistanceList);
+        avgLiters = (liters / distanceDifference) * 100;
+        System.out.println("hello");
+        System.out.println(vehicleDataList);
+        System.out.println(avgLiters);
+
+
+//        text_averageConsumptionInMain.setText("Average consuption: " + avgLiters + " l/100km");
+
 //        List<?> list = new ArrayList<>();
 //        list = Arrays.asList((Object[])lai);
 //
@@ -125,23 +209,33 @@ public class mainFragment extends Fragment {
 //            avgCons +=l;
 //
 //        }
-////        liters = Arrays.asList((Object[])mViewModel.getVehicleLiters().getValue().toArray());
-////        convertObjectToList(lai);
-////        liters = vykdyti();
+//        liters = (convertObjectToList(mViewModel.getVehicleLiters().getValue().toArray()));
+//        convertObjectToList(lai);
+//        liters = vykdyti();
 //
-////        liters = new ArrayList<Float>().addAll(Float.parseFloat(mViewModel.getVehicleLiters().getValue().toArray()));
-//
-//
-//
-//        String avgConsumption = text_averageConsumptionInMain.setText("Average consuption: " + avgCons).toString();
-//    }
-//
+//       liters = new ArrayList<Float>.addAll(Float.parseFloat(mViewModel.getVehicleLiters().getValue().toArray()));
+    }
+
+    private int calcDistance(List<Integer> allDistanceList) {
+        int minDistance = allDistanceList.get(0);
+        int maxDistance = 0;
+        for (Integer currentDistance : allDistanceList) {
+            if (currentDistance < minDistance) {
+                minDistance = currentDistance;
+            } else if (currentDistance > maxDistance) {
+                maxDistance = currentDistance;
+            }
+        }
+        return maxDistance - minDistance;
+    }
+
+
     public static List<?> convertObjectToList(Object obj) {
         List<?> list = new ArrayList<>();
         if (obj.getClass().isArray()) {
-            list = Arrays.asList((Object[])obj);
+            list = Arrays.asList((Object[]) obj);
         } else if (obj instanceof Collection) {
-            list = new ArrayList<>((Collection<?>)obj);
+            list = new ArrayList<>((Collection<?>) obj);
         }
         return list;
     }
@@ -153,6 +247,7 @@ public class mainFragment extends Fragment {
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -169,7 +264,9 @@ public class mainFragment extends Fragment {
         text_averagePriceInMain = getView().findViewById(R.id.text_averagePriceInMain);
 
         listenerSetup();
+        observerSetup();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
@@ -186,6 +283,7 @@ public class mainFragment extends Fragment {
         buttonNavigateStatisticsFragment = view.findViewById(R.id.button_statisticsFragment);
         buttonAddToDatabase = view.findViewById(R.id.button_addToDataBase);
 
+
         if (vehicleSelectedCounter == 1) {
             currentVehicle = vehicleName_1;
         } else if (vehicleSelectedCounter == 2) {
@@ -193,7 +291,12 @@ public class mainFragment extends Fragment {
         } else if (vehicleSelectedCounter == 3) {
             currentVehicle = vehicleName_3;
         }
-
+//        calculateAvgConsumption();
+//        try {
+//            calculateAvgConsumption();
+//        } catch (NullPointerException e) {
+//            System.out.println("NullPointerException");
+//        }
 
         TextView textViewVehicleName = view.findViewById(R.id.text_main_vehicleName);
         textViewVehicleName.setText(currentVehicle);

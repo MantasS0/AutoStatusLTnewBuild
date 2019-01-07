@@ -13,7 +13,7 @@ public abstract class Room_Database extends RoomDatabase {
 
     public abstract Room_Data_DataAccessObject room_data_dataAccessObject();
 
-    private static volatile Room_Database INSTANCE;
+    private static Room_Database INSTANCE; //was volatile
 
     static Room_Database getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -22,6 +22,7 @@ public abstract class Room_Database extends RoomDatabase {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             Room_Database.class, "room_database")
+//                            .allowMainThreadQueries()  //this should not be here. I only put it until further notice, to test other functionality of the app.
 //                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }

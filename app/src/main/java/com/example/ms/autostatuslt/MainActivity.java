@@ -1,7 +1,7 @@
 package com.example.ms.autostatuslt;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+//import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -18,8 +18,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DataViewModel mDataViewModel;
-
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
     public static Integer vehicleSelectedCounter = 1;
 

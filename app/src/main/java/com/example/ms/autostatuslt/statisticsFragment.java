@@ -19,7 +19,6 @@ import static com.example.ms.autostatuslt.MainActivity.vehicleName_1;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_2;
 import static com.example.ms.autostatuslt.MainActivity.vehicleName_3;
 import static com.example.ms.autostatuslt.MainActivity.vehicleSelectedCounter;
-import static com.example.ms.autostatuslt.MainActivity.NEW_WORD_ACTIVITY_REQUEST_CODE;
 
 
 

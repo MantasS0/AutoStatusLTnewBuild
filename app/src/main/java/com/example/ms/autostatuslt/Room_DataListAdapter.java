@@ -35,7 +35,7 @@ public class Room_DataListAdapter extends RecyclerView.Adapter<Room_DataListAdap
     public void onBindViewHolder(Room_DataViewHolder holder, int position) {
         if (mRoomData != null) {
             Room_Data current = mRoomData.get(position);
-            holder.dataItemView.setText("" + current.getDistance() + " " + current.getLiters() + " " + current.getPrice() + " " + current.getDate());
+            holder.dataItemView.setText("" + current.getDistance() + "km - " + current.getLiters() + "l - " + current.getPrice() + "eu - " + current.getDate());
         } else {
             // Covers the case of data not being ready yet.
             holder.dataItemView.setText("No data yet.");
